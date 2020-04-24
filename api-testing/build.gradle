@@ -16,15 +16,17 @@ test {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.testng/testng
-    testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
+    compile group: 'org.testng', name: 'testng', version: '7.1.0'
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
-    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.3'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.3'
     // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all
-    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+    compile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common
+    compile group: 'io.rest-assured', name: 'rest-assured-common', version: '4.3.0'
 
 
 }
