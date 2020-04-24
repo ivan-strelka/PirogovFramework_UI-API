@@ -12,6 +12,15 @@ tasks.withType(JavaCompile) {
 test {
     // enable TestNG support (default is JUnit)
     useTestNG()
+
+    testLogging {
+        events "PASSED","FAILED", "SKIPPED"
+        showStandardStreams = true
+        showStackTraces = true
+        exceptionFormat = 'full'
+    }
+
+    test.outputs.upToDateWhen { false }
 }
 
 dependencies {
@@ -27,6 +36,8 @@ dependencies {
     compile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common
     compile group: 'io.rest-assured', name: 'rest-assured-common', version: '4.3.0'
+    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    compile group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
 
 
 }

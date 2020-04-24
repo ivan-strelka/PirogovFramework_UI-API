@@ -1,14 +1,14 @@
 package com.socks.api.secvices;
 
+import com.socks.api.assertions.AssertableResponse;
 import com.socks.api.payloads.UserRegistrationPayload;
-import io.restassured.response.Response;
 
 public class UserApiService extends BaseApiService {
-    public Response registerUser(UserRegistrationPayload payLoadUser) {
-        return setUp()
+
+    public AssertableResponse registerUser(UserRegistrationPayload payLoadUser) {
+        return new AssertableResponse(setUp()
                 .body(payLoadUser)
                 .when()
-                .post("register");
-
+                .post("register"));
     }
 }

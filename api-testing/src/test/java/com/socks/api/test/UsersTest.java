@@ -1,17 +1,23 @@
 package com.socks.api.test;
 
+import com.github.javafaker.Faker;
 import com.socks.api.payloads.UserRegistrationPayload;
+import com.socks.api.responses.UserRegistationResponse;
 import com.socks.api.secvices.UserApiService;
 import io.restassured.RestAssured;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
+import static com.socks.api.conditions.Conditions.bodyField;
+import static com.socks.api.conditions.Conditions.statusCode;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.not;
 
 public class UsersTest {
     private final UserApiService userApiService = new UserApiService();
+    private final Faker faker = new Faker(new Locale("ru"));
 
     @BeforeMethod
     public void setUp() {
@@ -22,36 +28,30 @@ public class UsersTest {
     @Test
     public void testCanRegisterNewUser() {
         UserRegistrationPayload payLoadUser = new UserRegistrationPayload()
-                .username(RandomStringUtils.randomAlphanumeric(6))
-                .email("test123")
-                .password("test123");
+                .username(faker.name().username())
+                .email("sdf@dsfs.com")
+                .password(faker.random().hex(7));
 
-        userApiService.registerUser(payLoadUser)
-                .then().log().all()
-                .assertThat()
-                .statusCode(200)
-                .body("id", not(isEmptyString()));
+        UserRegistationResponse response = userApiService.registerUser(payLoadUser)
+                .shouldHave(statusCode(200))
+                .asPojo(UserRegistationResponse.class);
+        response.getId();
 
     }
 
     @Test
     public void testCanRegisterNewUser2() {
         UserRegistrationPayload payLoadUser = new UserRegistrationPayload()
-                .username(RandomStringUtils.randomAlphanumeric(6))
+                .username(faker.funnyName().name())
                 .email("test123")
                 .password("test123");
 
         userApiService.registerUser(payLoadUser)
-                .then().log().all()
-                .assertThat()
-                .statusCode(200)
-                .body("id", not(isEmptyString()));
-
+                .shouldHave(statusCode(200))
+                .shouldHave(bodyField("id", not(isEmptyString())));
 
         userApiService.registerUser(payLoadUser)
-                .then().log().all()
-                .assertThat()
-                .statusCode(500);
+                .shouldHave(statusCode(500));
     }
 
 
