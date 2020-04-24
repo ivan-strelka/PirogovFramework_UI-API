@@ -7,7 +7,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static groovy.xml.Entity.not;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.not;
 
@@ -34,6 +33,7 @@ public class UsersTest {
                 .assertThat()
                 .statusCode(200)
                 .body("id", not(isEmptyString()));
+
     }
 
 
