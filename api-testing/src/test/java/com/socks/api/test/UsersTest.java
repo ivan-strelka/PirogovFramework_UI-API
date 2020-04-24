@@ -35,12 +35,28 @@ public class UsersTest {
         UserRegistationResponse response = userApiService.registerUser(payLoadUser)
                 .shouldHave(statusCode(200))
                 .asPojo(UserRegistationResponse.class);
-        response.getId();
+        System.out.println(response.getId());
 
     }
 
     @Test
     public void testCanRegisterNewUser2() {
+        UserRegistrationPayload payLoadUser = new UserRegistrationPayload()
+                .username(faker.funnyName().name())
+                .email("test123")
+                .password("test123");
+
+        userApiService.registerUser(payLoadUser)
+                .shouldHave(statusCode(200))
+                .shouldHave(bodyField("id", not(isEmptyString())));
+
+        userApiService.registerUser(payLoadUser)
+                .shouldHave(statusCode(500));
+    }
+
+
+    @Test
+    public void testCanRegisterNewUser3() {
         UserRegistrationPayload payLoadUser = new UserRegistrationPayload()
                 .username(faker.funnyName().name())
                 .email("test123")
