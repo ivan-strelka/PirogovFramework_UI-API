@@ -14,9 +14,10 @@ test {
     useTestNG()
 
     systemProperties System.getProperties()
+//    systemProperty 'allure.results.directory', 'api-testing/build/allure-results'
 
     testLogging {
-        events "PASSED","FAILED", "SKIPPED"
+        events "PASSED", "FAILED", "SKIPPED"
         showStandardStreams = true
         showStackTraces = true
         exceptionFormat = 'full'
@@ -24,6 +25,15 @@ test {
 
     test.outputs.upToDateWhen { false }
 }
+
+
+allure {
+    version = '2.5.0'
+//    autoconfigure = true
+    aspectjweaver = true
+    configuration = 'compile'
+}
+
 
 dependencies {
     // https://mvnrepository.com/artifact/org.testng/testng
@@ -48,6 +58,14 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     // https://mvnrepository.com/artifact/org.aeonbits.owner/owner-java8
     compile group: 'org.aeonbits.owner', name: 'owner-java8', version: '1.0.11'
+    // https://mvnrepository.com/artifact/com.github.dzieciou.testing/curl-logger
+//    compile group: 'com.github.dzieciou.testing', name: 'curl-logger', version: '1.0.4'
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.13.3'
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-gradle
+    compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+
+
 
 }
 

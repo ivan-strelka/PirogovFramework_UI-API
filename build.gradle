@@ -6,12 +6,15 @@ buildscript {
     }
     dependencies {
         classpath "io.franzbecker:gradle-lombok:3.3.0"
+        classpath "io.qameta.allure:allure-gradle:2.5"
 
     }
 }
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'io.franzbecker.gradle-lombok'
+    apply plugin: 'io.qameta.allure'
 
     repositories {
         jcenter()
