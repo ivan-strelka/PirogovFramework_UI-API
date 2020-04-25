@@ -13,6 +13,8 @@ test {
     // enable TestNG support (default is JUnit)
     useTestNG()
 
+    systemProperties System.getProperties()
+
     testLogging {
         events "PASSED","FAILED", "SKIPPED"
         showStandardStreams = true
@@ -38,7 +40,14 @@ dependencies {
     compile group: 'io.rest-assured', name: 'rest-assured-common', version: '4.3.0'
     // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
     compile group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
-
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    // https://mvnrepository.com/artifact/org.aeonbits.owner/owner-java8
+    compile group: 'org.aeonbits.owner', name: 'owner-java8', version: '1.0.11'
 
 }
 
