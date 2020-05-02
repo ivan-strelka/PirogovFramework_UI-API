@@ -9,7 +9,7 @@ public class MainPage {
 
 
     public static MainPage open() {
-        Selenide.open("http://localhost:80");
+        Selenide.open("http://134.209.230.249/");
         return new MainPage();
     }
 

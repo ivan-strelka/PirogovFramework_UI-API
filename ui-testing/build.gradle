@@ -16,9 +16,11 @@ test {
 }
 
 dependencies {
+    compile project(":api-testing")
     // https://mvnrepository.com/artifact/org.testng/testng
     testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
     // https://mvnrepository.com/artifact/com.codeborne/selenide
     compile group: 'com.codeborne', name: 'selenide', version: '5.11.1'
+
 
 }
