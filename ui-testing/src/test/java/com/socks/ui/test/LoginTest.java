@@ -15,7 +15,7 @@ public class LoginTest extends BaseUITest {
 
     private final UserApiService userApiService = new UserApiService();
 
-    @Test
+    @Test(priority = 2)
     public void userCanLogin() {
         UserRegistrationPayload payLoadUser = new UserRegistrationPayload()
                 .username(randomAlphanumeric(6))
