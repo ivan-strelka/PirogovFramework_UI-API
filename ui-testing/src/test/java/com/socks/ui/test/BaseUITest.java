@@ -14,7 +14,9 @@ public class BaseUITest {
         ProjectConfig prop = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         RestAssured.baseURI = prop.baseURL();
         Configuration.baseUrl = prop.baseURL();
+        Configuration.browser = "com.socks.ui.SelenoidDriverProvider";
         Configuration.timeout = 10000;
+//        Configuration.browserSize ="1200x1000";
 
     }
 
