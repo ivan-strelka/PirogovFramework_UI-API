@@ -8,3 +8,4 @@ allure-report
 /api/.allure/
 /allure-report/
 build
+*.txt

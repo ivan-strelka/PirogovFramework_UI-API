@@ -29,7 +29,7 @@ test {
 
 allure {
     version = '2.5.0'
-//    autoconfigure = true
+    autoconfigure = true
     aspectjweaver = true
     configuration = 'compile'
 }
@@ -64,7 +64,8 @@ dependencies {
     compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.13.3'
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-gradle
     compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
-
+// https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.3'
 
 
 }
